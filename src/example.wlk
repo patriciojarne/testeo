@@ -1,35 +1,24 @@
 /** First Wollok example */
-object gerente {
-	var neto = 1000
+object pepe {
 	var presentismo=0
-	var sueldo=0
 	method presentismo(){
 		return presentismo
 	}
 	method presentismo(faltas) {
 		presentismo = faltas
 	}
-	method neto() {return neto}
-	method sueldo(bono_p, bono_r){
-		sueldo=neto+bono_p.bono(self)+bono_r.bono(self) 
+	method sueldo(categoria, bono_p, bono_r){
+		return categoria.neto()+bono_p.bono(self)+bono_r.bono(categoria.neto())
 	}
-	
 }
-object cadete {
-	var neto = 1500
-	var presentismo=0
-	var sueldo=0
-	method presentismo(){
-		return presentismo
-	}
-	method presentismo(faltas) {
-		presentismo = faltas
-	}
-	method neto() {return neto}
-	method sueldo(bono_p, bono_r){
-		sueldo=neto+bono_p.bono(self)+bono_r.bono(self) 
-	}
 	
+object gerente{
+	var neto = 1000
+	method neto() {return neto}	
+}
+object cadete{
+	var neto = 1500
+	method neto() {return neto}
 }
 object bono_p1{
 	var bono=0
@@ -43,14 +32,12 @@ object bono_p1{
 		return bono
 	}
 }
-
 object bono_p2{
 	var bono=0
 	method bono(trabajador){
 		return bono
 	}
 }
-
 object bono_r1{
 	var bono=0
 	method bono(trabajador){
@@ -58,7 +45,6 @@ object bono_r1{
 		return bono
 	}
 }
-
 object bono_r2{
 	var bono=80
 	method bono(trabajador){
